@@ -41,6 +41,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ambulance
+    uniqueID: 338421913
+    locked: 0
+  - name: Building Back
+    uniqueID: 729927705
+    locked: 0
+  - name: People
+    uniqueID: 4285979887
+    locked: 0
+  - name: Building Front
+    uniqueID: 1524513509
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
