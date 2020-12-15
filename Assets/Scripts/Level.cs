@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,16 +8,32 @@ using UnityEngine.UI;
 public class Level : MonoBehaviour
 {
 
-
+    
     public Transform SapwnLocation;
     public Transform person;
     public Text ScoreText;
+    public GameObject GameOverScreen;
+    public GameObject WinScreen;
     public float SpawnTimerMax = 5f;
+    public int NumOfPeople = 5; // Number of people to spawn this level
+
+    public static event Action<bool> OnGameOver;
 
 
     private float spawnTimer;
     private float score;
+    private int peopleSpawned;
     private static Level instance;
+    private List<Transform> people;
+    private State state;
+
+
+    private enum State
+    {
+        Playing,
+        Won,
+        GameOver
+    }
 
 
 
@@ -29,20 +46,28 @@ public class Level : MonoBehaviour
     {
         spawnTimer = 2f;
         score = 0;
+        peopleSpawned = 0;
         ScoreText.text = score.ToString();
+        state = State.Playing;
+        people = new List<Transform>();
+        GameOverScreen.SetActive(false);
+        WinScreen.SetActive(false);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (spawnTimer < 0)
+        if(state == State.Playing && peopleSpawned <= NumOfPeople)
         {
-            SpawnPerson();
-            spawnTimer = SpawnTimerMax;
-        }
+            if (spawnTimer < 0)
+            {
+                SpawnPerson();
+                spawnTimer = SpawnTimerMax;
+            }
 
-        spawnTimer -= Time.deltaTime;
+            spawnTimer -= Time.deltaTime;
+        }
 
 
     }
@@ -51,18 +76,44 @@ public class Level : MonoBehaviour
     {
         Transform newPerson = Instantiate(person);
         newPerson.position = SapwnLocation.position;
+        people.Add(newPerson);
+        peopleSpawned++;
         
+    }
+    
+    private void Win()
+    {
+        state = State.Won;
+        WinScreen.SetActive(true);
+        OnGameOver.Invoke(true);
     }
 
     public void ChangeScore(int newScore)
     {
         score += newScore;
         ScoreText.text = score.ToString();
+        if(score == NumOfPeople)
+        {
+            Win();
+        }
     }
     
+
+    public void GameOver()
+    {
+        state = State.GameOver;
+        OnGameOver.Invoke(true);
+        GameOverScreen.SetActive(true);
+    }
+
 
     public static Level GetInstance()
     {
         return instance;
+    }
+
+    public void Restart()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
     }
 }
