@@ -5,13 +5,15 @@ using UnityEngine;
 public class Person : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
+    private State state;
     
     
     public float jumpMulti = 0.75f;
     public float minForce;
     public float maxForce;
+    public Sprite[] sprites;
 
-    private State state;
 
     //enum to know if the person has died or is still alive
     private enum State {
@@ -24,6 +26,9 @@ public class Person : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        int spriteIdx = Level.GetInstance().GetPeopleSpawned() % sprites.Length;
+        sr.sprite = sprites[spriteIdx];
         Level.OnGameOver += Die;
         Init();
     }
@@ -49,6 +54,7 @@ public class Person : MonoBehaviour
         state = State.Alive;
         float initForce = Random.Range(minForce, maxForce);
         rb.AddForce(Vector2.right * initForce, 0f);
+        rb.AddTorque(initForce * 0.3f);
     }
 
     private void Jump()

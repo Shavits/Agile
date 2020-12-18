@@ -47,7 +47,7 @@ public class Level : MonoBehaviour
         spawnTimer = 2f;
         score = 0;
         peopleSpawned = 0;
-        ScoreText.text = score.ToString();
+        ScoreText.text = ScoreString();
         state = State.Playing;
         people = new List<Transform>();
         GameOverScreen.SetActive(false);
@@ -58,7 +58,7 @@ public class Level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(state == State.Playing && peopleSpawned <= NumOfPeople)
+        if(state == State.Playing && peopleSpawned < NumOfPeople)
         {
             if (spawnTimer < 0)
             {
@@ -88,14 +88,25 @@ public class Level : MonoBehaviour
         OnGameOver.Invoke(true);
     }
 
+    private string ScoreString()
+    {
+        string res = score.ToString() + "\\" + NumOfPeople.ToString();
+        return res;
+    }
+
     public void ChangeScore(int newScore)
     {
         score += newScore;
-        ScoreText.text = score.ToString();
+        ScoreText.text = ScoreString();
         if(score == NumOfPeople)
         {
             Win();
         }
+    }
+
+    public int GetPeopleSpawned()
+    {
+        return peopleSpawned;
     }
     
 
