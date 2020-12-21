@@ -704,7 +704,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: You Won
+  m_Text: You Won!
 --- !u!222 &526943943
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1303,7 +1303,7 @@ MonoBehaviour:
   ScoreText: {fileID: 380005929}
   GameOverScreen: {fileID: 1261114863}
   WinScreen: {fileID: 99923619}
-  SpawnTimerMax: 5
+  SpawnTimerMax: 4
   NumOfPeople: 5
 --- !u!4 &1275238282
 Transform:

@@ -54,7 +54,7 @@ public class Person : MonoBehaviour
         state = State.Alive;
         float initForce = Random.Range(minForce, maxForce);
         rb.AddForce(Vector2.right * initForce, 0f);
-        rb.AddTorque(initForce * 0.3f);
+        rb.AddTorque(-initForce * 0.3f);
     }
 
     private void Jump()
