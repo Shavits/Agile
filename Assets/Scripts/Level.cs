@@ -90,7 +90,6 @@ public class Level : MonoBehaviour
                 int current = order[idx];
                 if (spawnTimer < 0)
                 {
-                    Debug.Log(idx);
                     if(current <= 2)
                     {
                         if(current == 1)
@@ -130,7 +129,7 @@ public class Level : MonoBehaviour
         //Update all powerup timers and remove those who are finished
         for (int i = powerUps.Count - 1; i >= 0; i--)
         {
-            if (powerUps[i].UpdateTimer(Time.deltaTime))
+            if (powerUps[i].UpdateTimer(Time.unscaledDeltaTime))
             {
                 powerUps.RemoveAt(i);
             }
