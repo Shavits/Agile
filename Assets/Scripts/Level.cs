@@ -17,6 +17,7 @@ public class Level : MonoBehaviour
     public GameObject GameOverScreen;
     public GameObject WinScreen;
     public float SpawnTimerMax = 5f;
+    public string nextLevel;
 
     public int[] order;// order of elements in the level
 
@@ -71,16 +72,6 @@ public class Level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if(state == State.Playing && peopleSpawned < NumOfPeople)
-        {
-            if (spawnTimer < 0)
-            {
-                SpawnPerson();
-                spawnTimer = SpawnTimerMax;
-            }
-
-            spawnTimer -= Time.deltaTime;
-        }*/
 
 
         if(state == State.Playing)
@@ -129,7 +120,7 @@ public class Level : MonoBehaviour
         //Update all powerup timers and remove those who are finished
         for (int i = powerUps.Count - 1; i >= 0; i--)
         {
-            if (powerUps[i].UpdateTimer(Time.unscaledDeltaTime))
+            if (powerUps[i].UpdateTimer(Time.deltaTime))
             {
                 powerUps.RemoveAt(i);
             }
@@ -215,9 +206,14 @@ public class Level : MonoBehaviour
 
     public void Restart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
+    public void NextLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(nextLevel);
+        
+    }
 
     private class PowerUp
     {
@@ -254,7 +250,7 @@ public class Level : MonoBehaviour
                     Time.timeScale = 0.5f;
                     break;
                 case "BiggerPlatform":
-                    Debug.Log("startBigger");
+                    Fireman.GetInstance().ChangeScale(1.5f);
                     break;
             }
         }
@@ -271,7 +267,7 @@ public class Level : MonoBehaviour
                         Time.timeScale = 1f;
                         return true;
                     case "BiggerPlatform":
-                        Debug.Log("stopBigger");
+                        Fireman.GetInstance().ChangeScale(1f);
                         return true;
                 }
             }

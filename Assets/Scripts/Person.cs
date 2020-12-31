@@ -7,9 +7,9 @@ public class Person : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private State state;
+    private float jumpTimer;
     
     
-    public float jumpMulti = 0.75f;
     public float minForce;
     public float maxForce;
     public Sprite[] sprites;
@@ -38,7 +38,10 @@ public class Person : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            Jump();
+            if(jumpTimer<= 0)
+            {
+                Jump();
+            }
         }else if(collision.tag == "Ambulance")
         {
             Finish(1);
@@ -46,6 +49,8 @@ public class Person : MonoBehaviour
         {
             Level.GetInstance().GameOver();
         }
+
+        jumpTimer -= Time.deltaTime;
     }
 
     //Gives initial force with random value
@@ -55,11 +60,24 @@ public class Person : MonoBehaviour
         float initForce = Random.Range(minForce, maxForce);
         rb.AddForce(Vector2.right * initForce, 0f);
         rb.AddTorque(-initForce * 0.3f);
+        jumpTimer = 0f;
     }
 
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, -rb.velocity.y * jumpMulti);
+        float positionDiff = transform.position.x - Fireman.GetInstance().GetPosition().x;
+        float xSize = transform.localScale.x * 0.6f;
+        if(positionDiff<= xSize && positionDiff >= -xSize)
+        {
+            rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x), -rb.velocity.y);
+        }else if (positionDiff > xSize)
+        {
+            rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x) * -0.9f, -rb.velocity.y * 0.75f);
+        }
+        else
+        {
+            rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x) * 1.1f, -rb.velocity.y * 1.15f);
+        }
     }
 
 
@@ -76,7 +94,6 @@ public class Person : MonoBehaviour
     {
         state = State.Dead;
         rb.bodyType = RigidbodyType2D.Static;
-        Debug.Log("died");
     }
 
     private void OnDestroy()

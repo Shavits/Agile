@@ -6,14 +6,18 @@ public class Fireman : MonoBehaviour
 {
     private Rigidbody2D rb;
     private State state;
+    private static Fireman instance;
 
     private enum State
     {
         Playing,
         GameOver
     }
-    
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,7 +34,7 @@ public class Fireman : MonoBehaviour
             {
                 Vector3 mousePos = Input.mousePosition;
                 mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-                float newPos = Mathf.Clamp(mousePos.x, -7f, 2.5f);
+                float newPos = Mathf.Clamp(mousePos.x, -7f, 3.5f);
                 rb.position = new Vector2(newPos, rb.position.y);
             }
         }
@@ -44,5 +48,22 @@ public class Fireman : MonoBehaviour
     private void OnDestroy()
     {
         Level.OnGameOver -= GameOver;
+        
+    }
+
+    public void ChangeScale(float scale)
+    {
+        transform.localScale = new Vector3(scale, transform.localScale.y, transform.localScale.z);
+    }
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
+
+    public static Fireman GetInstance()
+    {
+        return instance;
+        
     }
 }
