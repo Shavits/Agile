@@ -34,7 +34,7 @@ public class Fireman : MonoBehaviour
             {
                 Vector3 mousePos = Input.mousePosition;
                 mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-                float newPos = Mathf.Clamp(mousePos.x, -7f, 3.5f);
+                float newPos = Mathf.Clamp(mousePos.x, -7f, 4.5f);
                 rb.position = new Vector2(newPos, rb.position.y);
             }
         }

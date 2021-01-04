@@ -16,6 +16,7 @@ public class Level : MonoBehaviour
     public Text ScoreText;
     public GameObject GameOverScreen;
     public GameObject WinScreen;
+    public GameObject PauseScreen;
     public float SpawnTimerMax = 5f;
     public string nextLevel;
 
@@ -42,6 +43,7 @@ public class Level : MonoBehaviour
     {
         Playing,
         Won,
+        Paused,
         GameOver
     }
 
@@ -65,6 +67,7 @@ public class Level : MonoBehaviour
         powerUps = new List<PowerUp>();
         GameOverScreen.SetActive(false);
         WinScreen.SetActive(false);
+        PauseScreen.SetActive(false);
 
     }
 
@@ -114,19 +117,15 @@ public class Level : MonoBehaviour
 
                 spawnTimer -= Time.deltaTime;
             }
-        }
-
-
-        //Update all powerup timers and remove those who are finished
-        for (int i = powerUps.Count - 1; i >= 0; i--)
-        {
-            if (powerUps[i].UpdateTimer(Time.deltaTime))
+            //Update all powerup timers and remove those who are finished
+            for (int i = powerUps.Count - 1; i >= 0; i--)
             {
-                powerUps.RemoveAt(i);
+                if (powerUps[i].UpdateTimer(Time.deltaTime))
+                {
+                    powerUps.RemoveAt(i);
+                }
             }
         }
-
-
     }
 
     private void SpawnPerson(Transform spawnLoc)
@@ -215,13 +214,55 @@ public class Level : MonoBehaviour
         
     }
 
+    public void Pause()
+    {
+        if(state == State.Playing)
+        {
+            Time.timeScale = 0f;
+            state = State.Paused;
+            PauseScreen.SetActive(true);
+        }
+    }
+    
+    public void UnPause()
+    {
+        float newTimeScale = 1f;
+        if(powerUps.Count > 0)
+        {
+            bool slow = false;
+            foreach (PowerUp pu in powerUps)
+            {
+                if(pu.type == PowerUp.Type.SlowMotion)
+                {
+                    slow = true;
+                }
+            }
+            if (slow)
+            {
+                newTimeScale = 0.5f;
+            }
+        }
+        Time.timeScale = newTimeScale;
+        PauseScreen.SetActive(false);
+        state = State.Playing;
+    }
+
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+    }
+
+
+
     private class PowerUp
     {
         private float timer;
         private float timerMax = 5f;
-        private Type type;
+        public Type type;
 
-        private enum Type
+        public enum Type
         {
             SlowMotion,
             BiggerPlatform
