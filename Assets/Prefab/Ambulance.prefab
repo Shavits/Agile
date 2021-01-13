@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2910176323027945710}
   - component: {fileID: 2910176323027945711}
   - component: {fileID: 2910176323027945708}
+  - component: {fileID: -1412505494319855845}
+  - component: {fileID: -1084680470390501916}
   m_Layer: 11
   m_Name: Ambulance
   m_TagString: Ambulance
@@ -108,3 +110,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.77619, y: 2.684036}
   m_EdgeRadius: 0
+--- !u!114 &-1412505494319855845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910176323027945709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6e4cfe1de3bdd4387811d5333613d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &-1084680470390501916
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910176323027945709}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4acc9117b87d984c893afe17d42453e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

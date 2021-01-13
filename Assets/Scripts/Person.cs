@@ -85,6 +85,7 @@ public class Person : MonoBehaviour
     {
        
         Level.GetInstance().ChangeScore(score);
+        Ambulance.GetInstance().PersonEnter();
         
         Destroy(gameObject);
     }
