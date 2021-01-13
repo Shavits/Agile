@@ -13,6 +13,7 @@ public class Level : MonoBehaviour
     public Transform person;
     public Transform Throwable;
     public Transform ThrowLocation;
+    public Transform Mattress;
     public Text ScoreText;
     public GameObject GameOverScreen;
     public GameObject WinScreen;
@@ -25,9 +26,10 @@ public class Level : MonoBehaviour
     public static event Action<bool> OnGameOver;
 
 
-    private const int SLOWMOTION = 3;
+    private const int MATTRESS = 3;
     private const int BIGGERPLATFORM = 4;
     private const int OBSTACLE = 5;
+    private const int SLOWMOTION = 6;
 
 
     private int NumOfPeople = 5; // Number of people to spawn this level
@@ -100,9 +102,9 @@ public class Level : MonoBehaviour
                     }
                     else if(current >= 2)
                     {
-                        if(current == SLOWMOTION)
+                        if(current == MATTRESS)
                         {
-                            SpawnThrowable("SlowMotion");
+                            SpawnThrowable("Mattress");
                         }else if (current == BIGGERPLATFORM)
                         {
                             SpawnThrowable("BiggerPlatform");
@@ -168,7 +170,7 @@ public class Level : MonoBehaviour
 
     public void ApplyPowerUp(string type)
     {
-        powerUps.Add(new PowerUp(type));
+        powerUps.Add(new PowerUp(type, Mattress));
     }
 
     public int GetPeopleSpawned()
@@ -260,20 +262,28 @@ public class Level : MonoBehaviour
     {
         private float timer;
         private float timerMax = 5f;
+        private Transform Mattress;
+        private Transform InstancedMattress;
+        
         public Type type;
+
+
+
 
         public enum Type
         {
-            SlowMotion,
-            BiggerPlatform
+            Mattress,
+            BiggerPlatform,
+            SlowMotion
         }
 
-        public PowerUp(string type)
+        public PowerUp(string type, Transform Mattress)
         {
             switch (type)
             {
-                case "SlowMotion":
-                    this.type = Type.SlowMotion;
+                case "Mattress":
+                    this.type = Type.Mattress;
+                    this.Mattress = Mattress;
                     break;
                 case "BiggerPlatform":
                     this.type = Type.BiggerPlatform;
@@ -293,6 +303,9 @@ public class Level : MonoBehaviour
                 case "BiggerPlatform":
                     Fireman.GetInstance().ChangeScale(1.5f);
                     break;
+                case "Mattress":
+                    InstancedMattress = Instantiate(Mattress);
+                    break;
             }
         }
 
@@ -309,6 +322,10 @@ public class Level : MonoBehaviour
                         return true;
                     case "BiggerPlatform":
                         Fireman.GetInstance().ChangeScale(1f);
+                        return true;
+                    case "Mattress":
+                        InstancedMattress.gameObject.GetComponent<Animator>().SetTrigger("Popped");
+                        Destroy(InstancedMattress.gameObject, 2f);
                         return true;
                 }
             }

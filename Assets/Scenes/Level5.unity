@@ -680,6 +680,8 @@ MonoBehaviour:
   Throwable: {fileID: 4036070233104721828, guid: b6a53f21a0aaad044a676b796af41e84,
     type: 3}
   ThrowLocation: {fileID: 1519024098}
+  Mattress: {fileID: 2806418636324025048, guid: cc2ab329dc5a67d48a54628ed5cb91ba,
+    type: 3}
   ScoreText: {fileID: 390479403}
   GameOverScreen: {fileID: 390479402}
   WinScreen: {fileID: 390479401}

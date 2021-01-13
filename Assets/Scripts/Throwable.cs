@@ -26,6 +26,7 @@ public class Throwable : MonoBehaviour
     {
         SlowMotion,
         BiggerPlatform,
+        Mattress,
         Obstacle
     }
 
@@ -63,6 +64,9 @@ public class Throwable : MonoBehaviour
                 break;
             case "Obstacle":
                 this.type = Type.Obstacle;
+                break;
+            case "Mattress":
+                this.type = Type.Mattress;
                 break;
         }
 
@@ -106,8 +110,9 @@ public class Throwable : MonoBehaviour
 
     private void InitSpriteDict()
     {
-        sprites.Add("SlowMotion", spriteArray[0]);
+        sprites.Add("Mattress", spriteArray[0]);
         sprites.Add("BiggerPlatform", spriteArray[1]);
         sprites.Add("Obstacle", spriteArray[2]);
+        sprites.Add("SlowMotion", spriteArray[3]);
     }
 }

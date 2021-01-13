@@ -36,16 +36,24 @@ public class Person : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.tag == "Player")
         {
-            if(jumpTimer<= 0)
+            if (jumpTimer <= 0)
             {
-                Jump();
+                Jump(true);
             }
-        }else if(collision.tag == "Ambulance")
+        }
+        else if (collision.tag == "Mattress")
+        {
+            if (jumpTimer <= 0)
+            {
+                Jump(false);
+            }
+        }else if (collision.tag == "Ambulance")
         {
             Finish(1);
-        }else if(collision.tag == "Ground")
+        }
+        else if (collision.tag == "Ground")
         {
             Level.GetInstance().GameOver();
         }
@@ -63,20 +71,26 @@ public class Person : MonoBehaviour
         jumpTimer = 0f;
     }
 
-    private void Jump()
+    private void Jump(bool hitFireman)
     {
-        float positionDiff = transform.position.x - Fireman.GetInstance().GetPosition().x;
-        float xSize = transform.localScale.x * 0.6f;
-        if(positionDiff<= xSize && positionDiff >= -xSize)
+        if (hitFireman)
+        {
+            float positionDiff = transform.position.x - Fireman.GetInstance().GetPosition().x;
+            float xSize = transform.localScale.x * 0.6f;
+            if(positionDiff<= xSize && positionDiff >= -xSize)
+            {
+                rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x), -rb.velocity.y);
+            }else if (positionDiff > xSize)
+            {
+                rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x) * -0.9f, -rb.velocity.y * 0.75f);
+            }
+            else
+            {
+                rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x) * 1.1f, -rb.velocity.y * 1.15f);
+            }
+        }else
         {
             rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x), -rb.velocity.y);
-        }else if (positionDiff > xSize)
-        {
-            rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x) * -0.9f, -rb.velocity.y * 0.75f);
-        }
-        else
-        {
-            rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x) * 1.1f, -rb.velocity.y * 1.15f);
         }
     }
 
