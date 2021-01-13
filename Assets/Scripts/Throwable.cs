@@ -86,7 +86,8 @@ public class Throwable : MonoBehaviour
                 }
                 else
                 {
-                    Level.GetInstance().GameOver();
+                    Fireman.GetInstance().HurtFireman();
+                    Destroy(gameObject);
                 }
             }
             else if (collision.tag == "Ground")

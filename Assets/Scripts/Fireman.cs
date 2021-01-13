@@ -7,6 +7,12 @@ public class Fireman : MonoBehaviour
     private Rigidbody2D rb;
     private State state;
     private static Fireman instance;
+    private SpriteRenderer sr;
+    private bool hurt;
+    private Transform explosionInstance;
+
+    public Sprite HurtSprite;
+    public Transform Explosion;
 
     private enum State
     {
@@ -21,7 +27,9 @@ public class Fireman : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         state = State.Playing;
+        hurt = false;
         Level.OnGameOver += GameOver;
     }
 
@@ -59,6 +67,23 @@ public class Fireman : MonoBehaviour
     public Vector3 GetPosition()
     {
         return transform.position;
+    }
+
+    public void HurtFireman()
+    {
+        if (hurt)
+        {
+            Level.GetInstance().GameOver();
+        }
+        else
+        {
+            hurt = true;
+            explosionInstance = Instantiate(Explosion, transform);
+            explosionInstance.position = transform.position;
+            sr.sprite = HurtSprite;
+            Destroy(explosionInstance.gameObject, 1f);
+        }
+
     }
 
     public static Fireman GetInstance()
