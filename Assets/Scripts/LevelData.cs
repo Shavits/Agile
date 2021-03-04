@@ -6,14 +6,21 @@ public class LevelData : MonoBehaviour
 {
 
     public GameObject Tutorial;
+    private string startLevel;
 
     private void Awake()
     {
         HideTutorial();
     }
+
+    private void Start()
+    {
+        startLevel = SaveData.GetInstance().GetMaxLevelReched();    
+    }
+
     public void StartLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(startLevel);
     }
 
     public void ShowTutorial()
@@ -24,5 +31,15 @@ public class LevelData : MonoBehaviour
     public void HideTutorial()
     {
         Tutorial.SetActive(false);
+    }
+
+    public void PopulateSaveData(SaveData saveData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void LoadFromSaveData(SaveData saveData)
+    {
+        throw new System.NotImplementedException();
     }
 }

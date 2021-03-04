@@ -150,6 +150,7 @@ public class Level : MonoBehaviour
         state = State.Won;
         WinScreen.SetActive(true);
         OnGameOver.Invoke(true);
+        SaveData.GetInstance().SetMaxLevelReached(nextLevel);
     }
 
     private string ScoreString()
@@ -255,7 +256,6 @@ public class Level : MonoBehaviour
         Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
-
 
 
     private class PowerUp
