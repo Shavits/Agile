@@ -112,6 +112,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e756000071635e49920253d8ee2382c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Skins:
+  - {fileID: 21300000, guid: 3da92e229037cb04e9bc324c726691f2, type: 3}
+  - {fileID: 21300000, guid: 092463b8dc6b8c94ba27c45481dbd0e1, type: 3}
+  - {fileID: 21300000, guid: 40dcc784b65028d47acce105bdbedee6, type: 3}
+  - {fileID: 21300000, guid: 1ab4ce9a777146540ab6090d67d4bc57, type: 3}
+  - {fileID: 21300000, guid: bfc37f358bfc14d4dbf6ec81d7e2efbf, type: 3}
+  - {fileID: 21300000, guid: f54b8b567c0d8d6408cf177b1b252a27, type: 3}
   HurtSprite: {fileID: 21300000, guid: 04d585ecef4869d4093b14e2c6f35614, type: 3}
   Explosion: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!50 &6189845345829600375

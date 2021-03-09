@@ -10,7 +10,9 @@ public class Fireman : MonoBehaviour
     private SpriteRenderer sr;
     private bool hurt;
     private Transform explosionInstance;
+    private int spriteIdx;
 
+    public Sprite[] Skins;
     public Sprite HurtSprite;
     public Transform Explosion;
 
@@ -28,6 +30,8 @@ public class Fireman : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        spriteIdx = SaveData.GetInstance().GetSpriteIdx();
+        sr.sprite = Skins[spriteIdx];
         state = State.Playing;
         hurt = false;
         Level.OnGameOver += GameOver;

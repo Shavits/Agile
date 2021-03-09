@@ -19,7 +19,7 @@ public class SaveData : MonoBehaviour
         }
 
         maxLevelReached = PlayerPrefs.GetString("MaxLevelReached", "Level1");
-        spriteIdx = PlayerPrefs.GetInt("SpriteIdx", 1);
+        spriteIdx = PlayerPrefs.GetInt("SpriteIdx", 0);
     }
 
     public static SaveData GetInstance()
