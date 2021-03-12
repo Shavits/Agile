@@ -689,7 +689,7 @@ MonoBehaviour:
   ScoreText: {fileID: 1982753025}
   GameOverScreen: {fileID: 1982753024}
   WinScreen: {fileID: 1982753023}
-  UnlockSkinScreen: {fileID: 0}
+  UnlockSkinScreen: {fileID: 1982753027}
   PauseScreen: {fileID: 1982753026}
   SpawnTimerMax: 4
   nextLevel: Level4
@@ -1169,6 +1169,12 @@ MonoBehaviour:
 --- !u!1 &1982753026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2583647744350244803, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+    type: 3}
+  m_PrefabInstance: {fileID: 1982753022}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1982753027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6900549876039460385, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
     type: 3}
   m_PrefabInstance: {fileID: 1982753022}
   m_PrefabAsset: {fileID: 0}

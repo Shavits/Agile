@@ -520,6 +520,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &748527352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6900549876039460385, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+    type: 3}
+  m_PrefabInstance: {fileID: 1247427060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &969148270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -991,7 +997,7 @@ MonoBehaviour:
   ScoreText: {fileID: 1247427065}
   GameOverScreen: {fileID: 1247427064}
   WinScreen: {fileID: 1247427063}
-  UnlockSkinScreen: {fileID: 0}
+  UnlockSkinScreen: {fileID: 748527352}
   PauseScreen: {fileID: 1247427061}
   SpawnTimerMax: 4
   nextLevel: Level2

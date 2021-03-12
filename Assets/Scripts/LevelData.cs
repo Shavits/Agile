@@ -16,7 +16,7 @@ public class LevelData : MonoBehaviour
     private void Start()
     {
         startLevel = SaveData.GetInstance().GetMaxLevelReched();
-        SaveData.GetInstance().SetSpriteIdx(2);
+        //SaveData.GetInstance().SetSpriteIdx(2);
     }
 
     public void StartLevel()

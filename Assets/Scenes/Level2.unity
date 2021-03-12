@@ -787,7 +787,7 @@ MonoBehaviour:
   ScoreText: {fileID: 380005929}
   GameOverScreen: {fileID: 1261114863}
   WinScreen: {fileID: 99923619}
-  UnlockSkinScreen: {fileID: 0}
+  UnlockSkinScreen: {fileID: 6105351391714563305}
   PauseScreen: {fileID: 1368409107}
   SpawnTimerMax: 4
   nextLevel: Level3
@@ -1216,3 +1216,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9514faefaa1abf4da5ed58d5d3a7b81, type: 3}
+--- !u!1 &6105351391714563305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6900549876039460385, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+    type: 3}
+  m_PrefabInstance: {fileID: 6105351391714563304}
+  m_PrefabAsset: {fileID: 0}
