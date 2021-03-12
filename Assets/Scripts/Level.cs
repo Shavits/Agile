@@ -45,7 +45,6 @@ public class Level : MonoBehaviour
     private enum State
     {
         Playing,
-        Unlock,
         Won,
         Paused,
         GameOver
@@ -150,7 +149,6 @@ public class Level : MonoBehaviour
 
     private void Unlock()
     {
-        state = State.Unlock;
         UnlockSkinScreen.SetActive(true);
     }
 
