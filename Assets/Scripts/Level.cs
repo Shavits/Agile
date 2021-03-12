@@ -17,6 +17,7 @@ public class Level : MonoBehaviour
     public Text ScoreText;
     public GameObject GameOverScreen;
     public GameObject WinScreen;
+    public GameObject UnlockSkinScreen;
     public GameObject PauseScreen;
     public float SpawnTimerMax = 5f;
     public string nextLevel;
@@ -44,6 +45,7 @@ public class Level : MonoBehaviour
     private enum State
     {
         Playing,
+        Unlock,
         Won,
         Paused,
         GameOver
@@ -69,6 +71,7 @@ public class Level : MonoBehaviour
         powerUps = new List<PowerUp>();
         GameOverScreen.SetActive(false);
         WinScreen.SetActive(false);
+        UnlockSkinScreen.SetActive(false);
         PauseScreen.SetActive(false);
 
     }
@@ -144,7 +147,21 @@ public class Level : MonoBehaviour
         newThrow.GetComponent<Throwable>().SetType(type);
         newThrow.position = ThrowLocation.position;
     }
-    
+
+    private void Unlock()
+    {
+        state = State.Unlock;
+        UnlockSkinScreen.SetActive(true);
+    }
+
+    public void DismissUnlock(int equip)
+    {
+        UnlockSkinScreen.SetActive(false);
+        if (equip != -1)
+        {
+            SaveData.GetInstance().SetSpriteIdx(equip);
+        }
+    }
     private void Win()
     {
         state = State.Won;
@@ -166,6 +183,7 @@ public class Level : MonoBehaviour
         if(score == NumOfPeople)
         {
             Win();
+            Unlock();
         }
     }
 
