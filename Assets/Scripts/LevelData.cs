@@ -12,6 +12,7 @@ public class LevelData : MonoBehaviour
     private void Awake()
     {
         HideTutorial();
+        HideSkinStore(1);
     }
 
     private void Start()
@@ -33,6 +34,10 @@ public class LevelData : MonoBehaviour
     public void ShowTutorial()
     {
         Tutorial.SetActive(true);
+    }
+    public void ShowSkinStore()
+    {
+        SkinStore.SetActive(true);
     }
 
     public void HideTutorial()
