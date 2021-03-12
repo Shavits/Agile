@@ -359,6 +359,46 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5473552975771598524, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1275238281}
+    - target: {fileID: 5473552975771598524, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DismissUnlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473552975771598524, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473552975771598524, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5922184725560722206, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1275238281}
+    - target: {fileID: 5922184725560722206, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DismissUnlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5922184725560722206, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5922184725560722206, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6105351390716409670, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -463,6 +503,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UnPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864135358899645011, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f54b8b567c0d8d6408cf177b1b252a27,
+        type: 3}
+    - target: {fileID: 6900549876039460385, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9514faefaa1abf4da5ed58d5d3a7b81, type: 3}
@@ -939,6 +990,7 @@ MonoBehaviour:
   ScoreText: {fileID: 390479403}
   GameOverScreen: {fileID: 390479402}
   WinScreen: {fileID: 390479401}
+  UnlockSkinScreen: {fileID: 0}
   PauseScreen: {fileID: 390479404}
   SpawnTimerMax: 3
   nextLevel: 
