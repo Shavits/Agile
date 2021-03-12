@@ -6,6 +6,7 @@ public class LevelData : MonoBehaviour
 {
 
     public GameObject Tutorial;
+    public GameObject SkinStore;
     private string startLevel;
 
     private void Awake()
@@ -37,6 +38,12 @@ public class LevelData : MonoBehaviour
     public void HideTutorial()
     {
         Tutorial.SetActive(false);
+    }
+
+    public void HideSkinStore(int skin)
+    {
+        SkinStore.SetActive(false);
+        SaveData.GetInstance().SetSpriteIdx(skin);
     }
 
     public void PopulateSaveData(SaveData saveData)
