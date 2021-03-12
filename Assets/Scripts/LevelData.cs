@@ -8,6 +8,7 @@ public class LevelData : MonoBehaviour
     public GameObject Tutorial;
     public GameObject SkinStore;
     private string startLevel;
+    private int saveLastSkin;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class LevelData : MonoBehaviour
     public void ShowSkinStore()
     {
         SkinStore.SetActive(true);
+        saveLastSkin = SaveData.GetInstance().GetSpriteIdx();
     }
 
     public void HideTutorial()
@@ -48,7 +50,13 @@ public class LevelData : MonoBehaviour
     public void HideSkinStore(int skin)
     {
         SkinStore.SetActive(false);
-        SaveData.GetInstance().SetSpriteIdx(skin);
+        if(skin != -1)
+        {
+            SaveData.GetInstance().SetSpriteIdx(skin);
+        } else
+        {
+            SaveData.GetInstance().SetSpriteIdx(saveLastSkin);
+        }
     }
 
     public void PopulateSaveData(SaveData saveData)
