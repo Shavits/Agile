@@ -25,6 +25,8 @@ public class LevelData : MonoBehaviour
         {
             skinButtons.Add(skinGo[i].GetComponent<Button>());
         }
+
+        skinButtons.Sort(SortByName);
         HideTutorial();
         HideSkinStore(-1);
         HideResetProgresss(false);
@@ -105,5 +107,10 @@ public class LevelData : MonoBehaviour
     public void LoadFromSaveData(SaveData saveData)
     {
         throw new System.NotImplementedException();
+    }
+
+    private static int SortByName(Button o1, Button o2)
+    {
+        return o1.name.CompareTo(o2.name);
     }
 }
