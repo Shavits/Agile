@@ -17,8 +17,8 @@ public class Person : MonoBehaviour
 
     //enum to know if the person has died or is still alive
     private enum State {
-        Alive,
-        Dead
+        playing,
+        finsihed
         }
     
     
@@ -64,7 +64,7 @@ public class Person : MonoBehaviour
     //Gives initial force with random value
     private void Init()
     {
-        state = State.Alive;
+        state = State.playing;
         float initForce = Random.Range(minForce, maxForce);
         rb.AddForce(Vector2.right * initForce, 0f);
         rb.AddTorque(-initForce * 0.3f);
@@ -98,8 +98,12 @@ public class Person : MonoBehaviour
     private void Finish(int score)
     {
        
-        Level.GetInstance().ChangeScore(score);
-        Ambulance.GetInstance().PersonEnter();
+        if(state == State.playing)
+        {
+            Level.GetInstance().ChangeScore(score);
+            Ambulance.GetInstance().PersonEnter();
+            state = State.finsihed;
+        }
         
         Destroy(gameObject);
     }
@@ -107,7 +111,7 @@ public class Person : MonoBehaviour
     //Makes the person stop moving. Called from the OnGameOver event
     private void Die(bool died)
     {
-        state = State.Dead;
+        state = State.playing;
         rb.bodyType = RigidbodyType2D.Static;
     }
 

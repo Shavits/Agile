@@ -13,7 +13,7 @@ public class Fireman : MonoBehaviour
     private int spriteIdx;
 
     public Sprite[] Skins;
-    public Sprite HurtSprite;
+    public GameObject HurtOverlay;
     public Transform Explosion;
 
     private enum State
@@ -84,7 +84,7 @@ public class Fireman : MonoBehaviour
             hurt = true;
             explosionInstance = Instantiate(Explosion, transform);
             explosionInstance.position = transform.position;
-            sr.sprite = HurtSprite;
+            Instantiate(HurtOverlay, transform);
             Destroy(explosionInstance.gameObject, 1f);
         }
 

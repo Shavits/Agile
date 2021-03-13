@@ -1,35 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelData : MonoBehaviour
 {
 
     public GameObject Tutorial;
     public GameObject SkinStore;
+    public GameObject ResetData;
     private string startLevel;
-    private int saveLastSkin;
+
+    private List<Button> skinButtons;
 
     private void Awake()
     {
+        skinButtons = new List<Button>();
+
+
+        startLevel = SaveData.GetInstance().GetMaxLevelReched();
+
+        GameObject[] skinGo = GameObject.FindGameObjectsWithTag("SkinButton");
+        for (int i = 0; i < skinGo.Length; i++)
+        {
+            skinButtons.Add(skinGo[i].GetComponent<Button>());
+        }
         HideTutorial();
-        HideSkinStore(1);
+        HideSkinStore(-1);
+        HideResetProgresss(false);
     }
 
     private void Start()
     {
         //Debug progress reset
-        SaveData.GetInstance().SetSpriteIdx(0);
-        SaveData.GetInstance().SetMaxLevelReached("level1");
 
+        //SaveData.GetInstance().SetSpriteIdx(0);
+        //SaveData.GetInstance().SetMaxLevelReached("level1");
 
-
-        startLevel = SaveData.GetInstance().GetMaxLevelReched();
+        
     }
 
     public void StartLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(startLevel);
+        if (startLevel.Equals("finished"))
+        {
+            ResetData.SetActive(true);
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(startLevel);
+        }
     }
 
     public void ShowTutorial()
@@ -38,8 +58,15 @@ public class LevelData : MonoBehaviour
     }
     public void ShowSkinStore()
     {
+        int maxSkin = SaveData.GetInstance().GetMaxSkinUnlocked();
+        for(int i = maxSkin + 1; i<skinButtons.Count; i++)
+        {
+            skinButtons[i].image.color = Color.black;
+        }
+
+
         SkinStore.SetActive(true);
-        saveLastSkin = SaveData.GetInstance().GetSpriteIdx();
+        
     }
 
     public void HideTutorial()
@@ -47,16 +74,27 @@ public class LevelData : MonoBehaviour
         Tutorial.SetActive(false);
     }
 
-    public void HideSkinStore(int skin)
+    public void HideSkinStore(int skinIdx)
     {
-        SkinStore.SetActive(false);
-        if(skin != -1)
+        if(skinIdx <= SaveData.GetInstance().GetMaxSkinUnlocked())
         {
-            SaveData.GetInstance().SetSpriteIdx(skin);
-        } else
-        {
-            SaveData.GetInstance().SetSpriteIdx(saveLastSkin);
+            SkinStore.SetActive(false);
+            if(skinIdx > 0 )
+            {
+                SaveData.GetInstance().SetSpriteIdx(skinIdx);
+            }
         }
+    }
+
+    public void HideResetProgresss(bool reset)
+    {
+        if (reset)
+        {
+            SaveData sd = SaveData.GetInstance();
+            sd.SetMaxLevelReached("Level1");
+            startLevel = sd.GetMaxLevelReched();
+        }
+        ResetData.SetActive(false);
     }
 
     public void PopulateSaveData(SaveData saveData)

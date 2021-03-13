@@ -119,7 +119,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1ab4ce9a777146540ab6090d67d4bc57, type: 3}
   - {fileID: 21300000, guid: bfc37f358bfc14d4dbf6ec81d7e2efbf, type: 3}
   - {fileID: 21300000, guid: f54b8b567c0d8d6408cf177b1b252a27, type: 3}
-  HurtSprite: {fileID: 21300000, guid: 04d585ecef4869d4093b14e2c6f35614, type: 3}
+  HurtOverlay: {fileID: 4361737870240778672, guid: 9d7fcd1d4a12fad48a52f35797cc6605,
+    type: 3}
   Explosion: {fileID: 426390, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!50 &6189845345829600375
 Rigidbody2D:

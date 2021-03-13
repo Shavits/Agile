@@ -999,7 +999,7 @@ MonoBehaviour:
   UnlockSkinScreen: {fileID: 390479406}
   PauseScreen: {fileID: 390479404}
   SpawnTimerMax: 3
-  nextLevel: 
+  nextLevel: finished
   order: 01000000050000000200000005000000020000000300000002000000040000000500000002000000
 --- !u!4 &1275238282
 Transform:
