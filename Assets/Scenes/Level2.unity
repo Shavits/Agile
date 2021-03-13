@@ -855,7 +855,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 17.900278, y: 0.14177291}
+  m_Size: {x: 32.4, y: 0.14177291}
   m_EdgeRadius: 0
 --- !u!4 &1299543772
 Transform:
@@ -1078,16 +1078,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 4454923676366678216, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -80
-      objectReference: {fileID: 0}
-    - target: {fileID: 4454923676366678216, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 5473552975771598524, guid: f9514faefaa1abf4da5ed58d5d3a7b81,
         type: 3}

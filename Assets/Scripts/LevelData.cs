@@ -36,17 +36,27 @@ public class LevelData : MonoBehaviour
     {
         //Debug progress reset
 
-        //SaveData.GetInstance().SetSpriteIdx(0);
-        //SaveData.GetInstance().SetMaxLevelReached("level1");
+        /*SaveData.GetInstance().SetSpriteIdx(0);
+        SaveData.GetInstance().SetMaxLevelReached("Tutorial");
+        PlayerPrefs.SetInt("Finished", 0);
+        startLevel = SaveData.GetInstance().GetMaxLevelReched();*/
 
-        
+
     }
 
     public void StartLevel()
     {
-        if (startLevel.Equals("finished"))
+        if (startLevel.Equals("Finished"))
         {
             ResetData.SetActive(true);
+        }
+        else if (startLevel.Equals("Tutorial"))
+        {
+            ShowTutorial();
+            SaveData sd = SaveData.GetInstance();
+            sd.SetMaxLevelReached("Level1");
+            startLevel = sd.GetMaxLevelReched();
+
         }
         else
         {

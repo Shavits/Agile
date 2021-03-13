@@ -19,9 +19,9 @@ public class SaveData : MonoBehaviour
             instance = this;
         }
 
-        maxLevelReached = PlayerPrefs.GetString("MaxLevelReached", "Level1");
+        maxLevelReached = PlayerPrefs.GetString("MaxLevelReached", "Tutorial");
         spriteIdx = PlayerPrefs.GetInt("SpriteIdx", 0);
-        finished = PlayerPrefs.GetInt("finished", 0);
+        finished = PlayerPrefs.GetInt("Finished", 0);
     }
 
     public static SaveData GetInstance()
@@ -39,10 +39,10 @@ public class SaveData : MonoBehaviour
         maxLevelReached = newMaxLevel;
 
         PlayerPrefs.SetString("MaxLevelReached", maxLevelReached);
-        if (newMaxLevel.Equals("finished"))
+        if (newMaxLevel.Equals("Finished"))
         {
             finished = 1;
-            PlayerPrefs.SetInt("finished", 1);
+            PlayerPrefs.SetInt("Finished", 1);
         }
     }
     public int GetSpriteIdx()
@@ -58,7 +58,7 @@ public class SaveData : MonoBehaviour
 
     public int GetMaxSkinUnlocked()
     {
-        if (maxLevelReached.Equals("finished") || finished == 1)
+        if (maxLevelReached.Equals("Finished") || finished == 1)
         {
             return 5;
         }

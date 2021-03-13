@@ -999,7 +999,7 @@ MonoBehaviour:
   UnlockSkinScreen: {fileID: 390479406}
   PauseScreen: {fileID: 390479404}
   SpawnTimerMax: 3
-  nextLevel: finished
+  nextLevel: Finished
   order: 01000000050000000200000005000000020000000300000002000000040000000500000002000000
 --- !u!4 &1275238282
 Transform:
@@ -1068,7 +1068,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 17.900278, y: 0.14177291}
+  m_Size: {x: 26.5, y: 0.14177291}
   m_EdgeRadius: 0
 --- !u!4 &1299543772
 Transform:

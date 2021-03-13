@@ -76,17 +76,17 @@ public class Person : MonoBehaviour
         if (hitFireman)
         {
             float positionDiff = transform.position.x - Fireman.GetInstance().GetPosition().x;
-            float xSize = transform.localScale.x * 0.6f;
+            float xSize = transform.localScale.x * 0.8f;
             if(positionDiff<= xSize && positionDiff >= -xSize)
             {
                 rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x), -rb.velocity.y);
             }else if (positionDiff > xSize)
             {
-                rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x) * -0.9f, -rb.velocity.y * 0.75f);
+                rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x) * -0.9f, -rb.velocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x) * 1.1f, -rb.velocity.y * 1.15f);
+                rb.velocity = new Vector2(Mathf.Abs(rb.velocity.x) * 1.1f, -rb.velocity.y);
             }
         }else
         {
