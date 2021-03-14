@@ -19,7 +19,7 @@ public class LevelData : MonoBehaviour
 
 
         startLevel = SaveData.GetInstance().GetMaxLevelReched();
-
+        SkinStore.SetActive(true);
         GameObject[] skinGo = GameObject.FindGameObjectsWithTag("SkinButton");
         for (int i = 0; i < skinGo.Length; i++)
         {
@@ -36,10 +36,10 @@ public class LevelData : MonoBehaviour
     {
         //Debug progress reset
 
-        /*SaveData.GetInstance().SetSpriteIdx(0);
-        SaveData.GetInstance().SetMaxLevelReached("Tutorial");
-        PlayerPrefs.SetInt("Finished", 0);
-        startLevel = SaveData.GetInstance().GetMaxLevelReched();*/
+        //SaveData.GetInstance().SetSpriteIdx(0);
+        //SaveData.GetInstance().SetMaxLevelReached("Tutorial");
+        //PlayerPrefs.SetInt("Finished", 0);
+        //startLevel = SaveData.GetInstance().GetMaxLevelReched();
 
 
     }

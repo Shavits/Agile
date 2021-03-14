@@ -62,6 +62,10 @@ public class SaveData : MonoBehaviour
         {
             return 5;
         }
+        else if (maxLevelReached.Equals("Tutorial"))
+        {
+            return 0;
+        }
         else
         {
             int skinIdx = int.Parse(maxLevelReached.Substring(maxLevelReached.Length -1)) -1;
